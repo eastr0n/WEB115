@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Timer Program</title>
+</head>
+<body>
+    <input type="button" id="startTimer" value="Start Timer"><br>
+    <input type="button" id="stopTimer" value="Stop Timer"><br>
+    <input type="button" id="resetTimer" value="Reset Timer"><br>
+
+    <div id="timerDisplay">0</div>
+
+    <script>
+        var time = 0;
+        var timer;
+        var isRunning = false;
+
+        document.getElementById('startTimer').onclick = function() {
+            if (!isRunning) {
+                isRunning = true;
+                timer = setInterval(function() {
+                    time++;
+                    document.getElementById('timerDisplay').innerHTML = time;
+                }, 1000);
+            }
+        };
+
+        document.getElementById('stopTimer').onclick = function() {
+            clearInterval(timer);
+            isRunning = false;
+        };
+
+        document.getElementById('resetTimer').onclick = function() {
+            clearInterval(timer);
+            isRunning = false;
+            time = 0;
+            document.getElementById('timerDisplay').innerHTML = time;
+        };
+    </script>
+</body>
+</html>
